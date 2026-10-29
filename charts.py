@@ -195,10 +195,10 @@ def store_product_heatmap(df):
     pivot = df.pivot_table(index="Store Name", columns="Product Name",
                            values="Total Sale Amount", aggfunc="sum", fill_value=0)
     fig = px.imshow(pivot, aspect="auto", text_auto=".2s", title=f"Revenue by Store and Product ({CURRENCY})",
-                    color_continuous_scale=[[0, SURFACE], [1, ACCENT]])
-    fig.update_traces(hovertemplate=f"%{{y}}<br>%{{x}}<br>{CURRENCY} %{{z:,.0f}}<extra></extra>")
+                    color_continuous_scale=[[0, SURFACE], [1, "#7A6230"]])
+    fig.update_traces(textfont_color=TEXT, hovertemplate=f"%{{y}}<br>%{{x}}<br>{CURRENCY} %{{z:,.0f}}<extra></extra>")
     fig.update_layout(coloraxis_showscale=False, height=max(300, 58 * len(pivot) + 130))
-    fig.update_xaxes(title=None, side="top")
+    fig.update_xaxes(title=None)
     fig.update_yaxes(title=None)
     return fig
 

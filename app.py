@@ -309,4 +309,11 @@ with tab_data:
             "Download Excel", to_excel(filtered_df), "jewellery_sales_filtered.xlsx",
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             icon=":material/download:", width="stretch")
-    st.dataframe(filtered_df, width="stretch", hide_index=True)
+    st.dataframe(
+        filtered_df, width="stretch", hide_index=True,
+        column_config={
+            "Date": st.column_config.DateColumn(format="YYYY-MM-DD"),
+            "Quantity Sold": st.column_config.NumberColumn(format="localized"),
+            "Unit Price": st.column_config.NumberColumn(format="localized"),
+            "Total Sale Amount": st.column_config.NumberColumn(format="localized"),
+        })
